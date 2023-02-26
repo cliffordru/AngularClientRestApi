@@ -1,0 +1,71 @@
+{
+    "patients": [
+        {
+            "id": 1,
+            "firstName": "Eva",
+            "lastName": "Ramírez",
+            "birthday": [
+                "2023-02-18"
+            ],
+            "gender": [
+                "F"
+            ]
+        },
+        {
+            "id": 2,
+            "firstName": "Zanele",
+            "lastName": "Fan",
+            "birthday": [
+                "2022-11-12"
+            ],
+            "gender": [
+                "M"
+            ]
+        }
+        ,
+        {
+            "id": 3,
+            "firstName": "Mike",
+            "lastName": "Joes",
+            "birthday": [
+                "2000-11-12"
+            ],
+            "gender": [
+                "M"
+            ]
+        },
+        {
+            "id": 4,
+            "firstName": "Susan",
+            "lastName": "White",
+            "birthday": [
+                "1990-12-12"
+            ],
+            "gender": [
+                "F"
+            ]
+        },
+        {
+            "id": 5,
+            "firstName": "Jill",
+            "lastName": "Hill",
+            "birthday": [
+                "1980-04-03"
+            ],
+            "gender": [
+                "F"
+            ]
+        },
+        {
+            "id": 6,
+            "firstName": "Tom",
+            "lastName": "Jones",
+            "birthday": [
+                "19160-11-12"
+            ],
+            "gender": [
+                "M"
+            ]
+        }
+    ]
+}
