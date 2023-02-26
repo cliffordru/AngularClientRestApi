@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { DataService } from '../data.service';
@@ -15,9 +16,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getPatients().pipe(takeUntil(this.destroy$)).subscribe((data) => {
-      console.log(data);
-      this.patients = data;
+    this.dataService.getPatients().pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
+      console.log(res);
+      this.patients = res.body;
     })
   }
 
@@ -25,5 +26,40 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.destroy$.next(true);
     // Unsubscribe from the subject
     this.destroy$.unsubscribe();
+  }
+
+  public firstPage() {
+    this.patients = [];
+    this.dataService.sendGetRequestToUrl(this.dataService.first).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
+      console.log(res);
+      this.patients = res.body;
+    })
+  }
+  public previousPage() {
+
+    if (this.dataService.prev !== undefined && this.dataService.prev !== '') {
+      this.patients = [];
+      this.dataService.sendGetRequestToUrl(this.dataService.prev).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
+        console.log(res);
+        this.patients = res.body;
+      })
+    }
+
+  }
+  public nextPage() {
+    if (this.dataService.next !== undefined && this.dataService.next !== '') {
+      this.patients = [];
+      this.dataService.sendGetRequestToUrl(this.dataService.next).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
+        console.log(res);
+        this.patients = res.body;
+      })
+    }
+  }
+  public lastPage() {
+    this.patients = [];
+    this.dataService.sendGetRequestToUrl(this.dataService.last).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
+      console.log(res);
+      this.patients = res.body;
+    })
   }
 }
